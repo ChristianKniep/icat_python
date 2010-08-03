@@ -1,0 +1,122 @@
+%\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+\documentclass[handout]{beamer}
+\let\Tiny=\tiny
+\hypersetup{pdfpagemode=FullScreen}
+
+\include{pythonlisting}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+%\setbeamertemplate{navigation symbols}{}
+
+\usetheme{Boadilla}
+
+\usecolortheme{beaver}
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+
+\definecolor{lGray}{gray}{.90}
+
+\newcommand{\code}[1]{\colorbox{lGray}{\texttt{#1}}}
+\author{Christian Kniep}
+
+\begin{document}
+\title[TITLE]{python - easy deploing}  
+\institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
+\date[\today]{\today} 
+
+\begin{frame}
+	\titlepage
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents
+\end{frame} 
+
+
+\section{Introduction} 
+	\subsection{Low vs High Level}
+		\begin{frame}[fragile]
+			\frametitle{Once upon a time...}
+			\begin{itemize}
+				\item<1-> 'ugly' assembler had to be used (e.g. MIPS)
+                \begin{verbatim}
+.data # define some varbiables
+# the string we want printed
+out:  .asciiz "Hello World"
+ 
+.text # the program
+main: li $v0, 4	  # cmd-reg to cmd 4 ('print')  
+      la $a0, out # set out as the 1st arg 
+      syscall     # execute the cmd
+      li $v0, 10  # cmd-reg to cmd 10 ('exit')
+      syscall     # execute the cmd
+\end{verbatim}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}
+			\frametitle{don't get me wrong}
+			\begin{itemize}
+				\item<1-> Assembler is the closest,directest way to program a CPU
+                \item[$\Rightarrow$]<2-> so its the fastest code you can write
+                \item<3-> you might just want to switch on the coffee-maker
+                \item[$\Rightarrow$]<4-> you don't care if it takes 2 nano- or 200 milliseconds
+            \end{itemize}
+        \end{frame}
+		\begin{frame}[fragile]
+			\frametitle{High Level Programming}
+			\begin{itemize}
+            	\item<1-> it doesn't mean you have to have a high level to program it
+                \item<2-> it the opposite: you only have to handle abstracted commands \\
+                          the assembler code will be created for you
+                \item<3-> checkout 'hello world' in C
+                \begin{lstlisting}[language=c]
+#include <stdio.h>
+
+main()
+{
+ printf("Hello World \n");
+}
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]
+			\frametitle{python-Programming}
+			\begin{itemize}
+            	\item<1-> python is even more high level then c
+                \begin{itemize}
+                    \item<2-> doesn't care what type you are using
+                    \item<3-> the syntax is intuitive
+                    \item<4-> its an interpreter language, so you don't have to compile it
+                    \item<4-> it's build from scratch, so there is no(t much) historical payload
+                \end{itemize}
+                \begin{lstlisting}[language=python]
+print "hello world"
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+
+    \subsection{Interpreter / Scripting Languages} 
+		\begin{frame}[fragile]
+			\frametitle{whats this suppose to mean?}
+			\begin{itemize}
+                \item<1-> you don't have to create an binary file
+                \item<2-> the programm is evaluated linewise
+                \item[$\Rightarrow$]<3-> so you are able to get a prompt
+                \begin{lstlisting}{language=python}
+$ python
+>>> print 'Hello World'
+Hello World
+\end{lstlisting}
+
+            \end{itemize}
+		\end{frame}
+	
+
+\end{document}
