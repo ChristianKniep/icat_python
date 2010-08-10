@@ -26,7 +26,7 @@
 \author{Christian Kniep}
 
 \begin{document}
-\title[TITLE]{python - easy deploing}  
+\title[python - easy deploying]{python - easy deploying}  
 \institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
 \date[\today]{\today} 
 
@@ -111,12 +111,238 @@ print "hello world"
                 \item[$\Rightarrow$]<3-> so you are able to get a prompt
                 \begin{lstlisting}{language=python}
 $ python
->>> print 'Hello World'
+>>> print "Hello World"
 Hello World
 \end{lstlisting}
-
+                \item<3-> So if you see \textbf{\textgreater \textgreater \textgreater} I am in live-mode
             \end{itemize}
 		\end{frame}
-	
+\section{Step By Step}
+    \subsection{Executables}
+		\begin{frame}[fragile]{Hello World \#2}
+			\begin{itemize}
+                \item<1-> We need a header
+                \begin{lstlisting}{language=python}
+#! python
+# -*- coding: utf-8 -*-
 
+print "Hello World"
+\end{lstlisting}
+                \item<2-> The header simply says what language do we use and
+                \item<3-> that we use utf8-coding to allow some characters.
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{Execute it}
+			\begin{itemize}
+                \item<1-> If you just have a textfile (without execute-permission)
+                \begin{lstlisting}
+$ python helloWorld.py
+Hello World
+\end{lstlisting}
+                \item<2-> Due to the header the OS will know that it should use python:
+                \begin{lstlisting}
+$ chmod +x helloWorld.py
+$ ./helloWorld.py
+Hello World
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+    \subsection{Strings}
+		\begin{frame}[fragile]{Work with strings}
+			\begin{itemize}
+                \item<1-> concatenate
+                \begin{lstlisting}
+>>> print "1" + "1"
+11
+\end{lstlisting}
+                \item<2-> Strings with linebreaks
+\begin{lstlisting}
+>>> x= """
+1st line
+2nd line
+"""
+>>> print x
+1st line
+2nd line
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{Work with strings}
+			\begin{itemize}
+                \item<1-> multiply
+                \begin{lstlisting}
+>>> print "X"*10
+XXXXXXXXXX
+\end{lstlisting}
+                \item<2-> formated output
+\begin{lstlisting}
+>>> print "decimal: %d" % 1
+decimal: 1
+>>> print "dec: %d - %d - %d" % (1,2,3)
+1 - 2 - 3
+>>> print "str: %s" % "some string"
+str: some string
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{Work with strings}
+			\begin{itemize}
+                \item<1-> more formated output
+\begin{lstlisting}
+>>> print "%-10s # %-10s" % ("Christian","Kniep")
+Christian  # Kniep
+>>> print "%-10s # %-10s" % ("Han","Solo")
+Han        # Solo
+\end{lstlisting}
+            \item<2-> good for useability, clearly arranged
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{some other commands}
+			\begin{itemize}
+                \item<1-> adjust strings
+\begin{lstlisting}
+>>> print hello.center(10)
+  hello
+>>> print "hello".center(10,"-")
+--hello---
+>>> print "hello".ljust(10,"-")
+hello-----
+>>> print "hello".rjust(10,"-")
+-----hello
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{some other commands}
+			\begin{itemize}
+                \item<1-> a quick glance of other stuff
+\begin{lstlisting}
+>>> len(X)
+10
+>>> x = "Hallo Welt"
+>>> len(x)
+10
+>>> x.find("l")
+2
+>>> x.count("l")
+3
+...
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+%%%%
+\section{Comparisons}
+    \subsection{Algebra}
+		\begin{frame}{Basic Algebra}
+			\begin{itemize}
+                \item<1-> 3 operators included
+                \begin{itemize}
+                    \item[AND]<2-> True and True = True
+                    \item<2-> True and False = False
+                    \item[OR]<3-> True or True = True
+                    \item<3-> True or False = True
+                    \item<3-> False or False = False
+                    \item[NOT]<3-> not True = False
+                    \item<3-> not False = True
+                \end{itemize}
+                \item<4-> mix em! \\
+                        True and (False or not False) = ?
+            \end{itemize}
+        \end{frame}    
+    %%%% 
+    \subsection{Digits}
+		\begin{frame}[fragile]{Digits}
+			\begin{itemize}
+                \item<1-> basic digits
+\begin{lstlisting}
+>>> 1==1
+True
+>>> 1!=1
+False
+>>> 1>1
+False
+>>> 1>=1
+True
+>>> 1<1
+False
+>>> 1<=1
+True
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{Strings}
+			\begin{itemize}
+                \item<1-> compare strings
+\begin{lstlisting}
+>>> "X"=="X"
+True
+>>> "X"<="X"
+True
+>>> "Y"<="X"
+False
+>>> "Hello World".startswith("H")
+True
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{types}
+			\begin{itemize}
+                \item<1-> compare types
+\begin{lstlisting}
+>>> type("X")
+<type 'str'>
+>>> type(1)
+<type 'int'>
+>>> type(1.0)
+<type 'float'>
+>>> type("X") == type(1)
+False
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+\section{Math}
+    \subsection{Basics}
+		\begin{frame}[fragile]{Hello World in calculation}
+			\begin{itemize}
+                \item<1-> Simple example...
+                \begin{lstlisting}
+>>> x = 1
+>>> y = 8
+>>> print x + y
+9
+\end{lstlisting}
+                \item<1-> advanced example...
+                \begin{lstlisting}
+>>> sqrt(9)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sqrt' is not defined
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+\section{Librarys}
+    \subsection{math}
+		\begin{frame}[fragile]{endless opportunities}
+			\begin{itemize}
+                \item<1-> normal import
+                \begin{lstlisting}
+>>> import math
+>>> math.sqrt(9)
+3.0
+\end{lstlisting}
+                \item<2-> import exclusiv commands
+                \begin{lstlisting}
+>>> from math import sqrt
+>>> sqrt(9)
+3.0
+\end{lstlisting}
+                \item<3-> import all commands
+                \begin{lstlisting}
+>>> from math import *
+>>> ceil(3.6)
+4.0
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+        
+        
 \end{document}
