@@ -1,5 +1,5 @@
-%\documentclass[hyperref={pdfpagelabels=false}]{beamer}
-\documentclass[handout]{beamer}
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout]{beamer}
 \let\Tiny=\tiny
 \hypersetup{pdfpagemode=FullScreen}
 
@@ -115,22 +115,30 @@ $ python
 Hello World
 \end{lstlisting}
                 \item<3-> So if you see \textbf{\textgreater \textgreater \textgreater} I am in live-mode
+                \item<4-> The indentation is important!
+                    \begin{lstlisting}
+>>>    print 'hello'
+  File "<stdin>", line 1
+    print 'hello'
+    ^
+IndentationError: unexpected indent
+\end{lstlisting}
             \end{itemize}
 		\end{frame}
 \section{Step By Step}
     \subsection{Executables}
 		\begin{frame}[fragile]{Hello World \#2}
+            Now we want to create a little script that can be executed.
 			\begin{itemize}
                 \item<1-> We need a header
                 \begin{lstlisting}{language=python}
 #! python
-# -*- coding: utf-8 -*-
 
 print "Hello World"
 \end{lstlisting}
-                \item<2-> The header simply says what language do we use and
-                \item<3-> that we use utf8-coding to allow some characters.
-            \end{itemize}
+                \item<2-> The header simply says what language do we use. \\
+                    So the OS could decide what program to use
+\end{itemize}
 		\end{frame}
 		\begin{frame}[fragile]{Execute it}
 			\begin{itemize}
@@ -167,7 +175,7 @@ Hello World
 \end{lstlisting}
             \end{itemize}
 		\end{frame}
-		\begin{frame}[fragile]{Work with strings}
+		\begin{frame}[fragile]{Work with strings \#2}
 			\begin{itemize}
                 \item<1-> multiply
                 \begin{lstlisting}
@@ -185,7 +193,7 @@ str: some string
 \end{lstlisting}
             \end{itemize}
 		\end{frame}
-		\begin{frame}[fragile]{Work with strings}
+		\begin{frame}[fragile]{Work with strings \#3}
 			\begin{itemize}
                 \item<1-> more formated output
 \begin{lstlisting}
@@ -212,9 +220,9 @@ hello-----
 \end{lstlisting}
             \end{itemize}
 		\end{frame}
-		\begin{frame}[fragile]{some other commands}
+		\begin{frame}[fragile]{some other commands \#2}
 			\begin{itemize}
-                \item<1-> a quick glance of other stuff
+                \item<1-> a quick glance 
 \begin{lstlisting}
 >>> len(X)
 10
@@ -231,8 +239,45 @@ hello-----
 		\end{frame}
 %%%%
 \section{Comparisons}
+    \subsection{if-then-else}
+		\begin{frame}[fragile]{use if}
+			\begin{itemize}
+                \item<1-> simply type:
+\begin{lstlisting}
+>>> if True:
+...   print 'here its true'
+...   print 'here also'
+... else:
+...   print 'now the false part'
+... 
+here its true
+here also
+>>>
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+        \begin{frame}[fragile]{Whats the shifting and the dots about?}
+			\begin{itemize}
+                \item<1-> In python the intendtion is part of the language.
+                \item<2-> e.g. in the if-statement you have to shift the command-block at least one char and stick to it
+                \item<3-> otherwise the interpreter will throw an error
+                    \begin{lstlisting}
+>>> if True:
+...    print 'right intention'
+...  print 'now I will get an error'
+  File "<stdin>", line 3
+    print 'now I will get an error'
+                                  ^
+IndentationError: unindent does not match
+any outer indentation level
+\end{lstlisting}
+                \item<4-> please note that python always shows you the exact error and the exact line
+            \end{itemize}
+		\end{frame}
     \subsection{Algebra}
 		\begin{frame}{Basic Algebra}
+            But back to the comparision-topic. Its kind of awkward to use True and False in an if-statement.
+            Actually you will use complex conditions.
 			\begin{itemize}
                 \item<1-> 3 operators included
                 \begin{itemize}
@@ -251,6 +296,7 @@ hello-----
     %%%% 
     \subsection{Digits}
 		\begin{frame}[fragile]{Digits}
+            And these conditions will be some comparision...
 			\begin{itemize}
                 \item<1-> basic digits
 \begin{lstlisting}
@@ -341,6 +387,12 @@ NameError: name 'sqrt' is not defined
 >>> ceil(3.6)
 4.0
 \end{lstlisting}
+            \end{itemize}
+		\end{frame}
+        \begin{frame}{Questions?}
+			\begin{itemize}
+                \item<1-> Any questions?
+                \item<2-> What about OOP
             \end{itemize}
 		\end{frame}
         

@@ -1,0 +1,215 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.3in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+% Special commands
+\newcommand{\code}[1]{\texttt{#1}}
+
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{ICAT Python CheatSheet}} \\
+\end{center}
+
+\subsection{script-template}
+To create a script this could be a template:
+\begin{lstlisting}
+#! python
+
+print 'Hello World'
+\end{lstlisting}
+The first line defines the interpreter which will be used by the OS. \\
+After give the execute-right it could be executed:
+\begin{lstlisting}
+$ chmod +x myScript.py
+$ ./myScript.py
+Hello World
+\end{lstlisting}
+
+\subsection{prompt}
+For testing quickly it could be usefull to get a prompt.
+Simply type \code{python} and you will get to it:
+\begin{lstlisting}
+$ python
+Python 2.6.4 |EPD 6.1-1 (32-bit)  
+[GCC 4.0.1 (Apple Inc. build 5465)] on darwin
+Type "help", "copyright", "credits" ...
+>>> 
+\end{lstlisting}
+The \textgreater\textgreater\textgreater \ are the prompt. If you use multilineconstructs you will get dots to show this:
+\begin{lstlisting}
+>>> if True:
+...    print 'I am True'
+I am True
+>>>
+\end{lstlisting}
+
+\subsection{Indentation}
+The indentation in python is part of the language and defines blocks.
+The first statement e.g. has to be close left, if you change this you will raise an error.
+\begin{lstlisting}
+>>>     print 'error'
+  File "<stdin>", line 1
+    print 'error'
+    ^
+IndentationError: unexpected indent
+\end{lstlisting}
+
+\section{Types / structures}
+The types are not fixed, it's possible to reassign
+a variable with another type
+\begin{lstlisting}
+>>> x = 1
+>>> type(x)
+<type 'int'>
+>>> x = "Hello"
+>>> type(x)
+<type 'str'>
+\end{lstlisting}
+\subsection{Strings}
+To assign a multiline Text:
+\begin{lstlisting}
+>>> x= """
+1st line
+2nd line
+"""
+>>> print x
+1st line
+2nd line
+\end{lstlisting}
+
+%\subsection{arrays}
+%Arrays are quite important, because there are so easy to use.
+
+\section{Operators}
+\subsection{looking for types by yourself}
+To assign a value you can simply assign it to a variable. You don't have to worry about the type.
+You will get a TypeError if you try to execute commands on the variable which are not implemented for this type.
+\begin{lstlisting}
+>>> 2 - 1
+1
+>>> 'c' - 'c'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for -:
+'str' and 'str'
+\end{lstlisting}
+\subsection{Strings}
+There are a lot of Operators around, just a view to get an idea:\\
+\begin{tabular}{llll}
+\verb!+!        & concatenate               & \verb!"1"+"2"! & \verb!"12"! \\
+\verb!*!        & multiply                  & \verb!"#"*5! & \verb!"#####"!  \\
+\verb!len()!    & give length               & \verb!len("12345")! & \verb!5! \\
+\verb!find()!   & index of 1st occurrence   & \verb!"12345".find("2")! & \verb!1! \\
+\verb!center()! & center string [and fill]  & \verb!"1".center(3,"-")! & \verb!-1-! \\
+\verb!rjust()!  & align right [and fill]    & \verb!"1".rjust(3,"-")! & \verb!--1! \\
+\end{tabular}
+
+\section{Comparisons}
+\subsection{if-then-else}
+The if-then-else construct is simply this:
+\begin{lstlisting}
+>>> if True:
+...   print 'here its true'
+... else:
+...   print 'now the false part'
+\end{lstlisting}
+True has to be substituted by some condition.
+\subsection{conditions}
+Depending on the type you could use various compare-operators, just a few: \\
+\begin{tabular}{llll}
+\verb!==!               & equal value       & \verb!1==1!                   & \verb!True! \\
+\verb'!='               & not equal value   & \verb'1!=1'                   & \verb!False! \\
+\verb'>='               & greater or equal  & \verb!2>=1!                   & \verb!True! \\
+\verb'<='               & less or equalue   & \verb!1<=2!                   & \verb!True! \\
+\verb!.startswith()!    & true when sta...  & \verb!"Hel".startswith("H")!  & \verb!True! 
+\end{tabular}
+
+\section{Librarys}
+To extend yout functionality import additional packages
+\subsection{import}
+For exapmple to use sqrt() import the lib math:
+\begin{lstlisting}
+>>> sqrt(9)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sqrt' is not defined
+>>> import math
+>>> math.sqrt(9)
+3.0
+>>> from math import sqrt
+>>> sqrt(9)
+3.0
+>>> from math import *
+>>> ceil(3.6)
+4.0
+
+\end{lstlisting}
+
+\end{multicols}
+\end{document}
