@@ -1,0 +1,98 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout]{beamer}
+\let\Tiny=\tiny
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{uml}
+
+%\setbeamertemplate{navigation symbols}{}
+\usetheme{Boadilla}
+
+\usecolortheme{beaver}
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+
+
+\definecolor{lGray}{gray}{.90}
+
+\newcommand{\code}[1]{\colorbox{lGray}{\texttt{#1}}}
+
+\author{Christian Kniep}
+
+\begin{document}
+
+\title{python - OOP}  
+\institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
+\date[\today]{\today} 
+
+\begin{frame}
+	\titlepage
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents
+\end{frame} 
+
+        
+\section{Lists}
+    \subsection{Basic list}
+        \begin{frame}[fragile]{Add}
+        	\begin{itemize}
+                \item<1-> Lists are liek a train, you have a beginning, and you can add as much wagons as you want
+                    \begin{lstlisting}
+>>> lst = []
+>>> lst.append(0)
+>>> lst
+[0]
+>>> lst.append(2)
+>>> lst.append(1)
+>>> lst
+[0, 2, 1]
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+        \begin{frame}[fragile]{sort, remove}
+        	\begin{itemize}
+                \item<1-> if you want to rearange the wagons then you could sort them
+                    \begin{lstlisting}
+>>> lst
+[0, 2, 1]
+>>> lst.sort()
+>>> lst
+[0, 1, 2]
+\end{lstlisting}
+                \item<2-> remove a wagon is as simple as you think
+                    \begin{lstlisting}
+>>> lst.remove(1)
+>>> lst
+[0, 2]
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+
+        \begin{frame}[fragile]{reverse, __add__}
+        	\begin{itemize}
+                \item<1-> there are various operation you could use to change the lst
+                    \begin{lstlisting}
+>>> lst = [0,2,4]
+>>> lst.reverse()
+>>> lst
+[4, 2, 0]
+\end{lstlisting}
+                \item<2-> maybe you want to get the last element and remove it
+                    \begin{lstlisting}
+>>> lst=[0,2,4]
+>>> lst.pop()
+\end{lstlisting}
+
+            \end{itemize}
+		\end{frame}
+
+\end{document}

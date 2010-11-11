@@ -1,0 +1,128 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout]{beamer}
+\let\Tiny=\tiny
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{uml}
+
+%\setbeamertemplate{navigation symbols}{}
+\usetheme{Boadilla}
+
+\usecolortheme{beaver}
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+
+
+\definecolor{lGray}{gray}{.90}
+
+\newcommand{\code}[1]{\colorbox{lGray}{\texttt{#1}}}
+
+\author{Christian Kniep}
+
+\begin{document}
+
+\title{python - OOP}  
+\institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
+\date[\today]{\today} 
+
+\begin{frame}
+	\titlepage
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents
+\end{frame} 
+
+
+\section{OOP} 
+	\subsection{Advantages}
+		\begin{frame}[fragile]{Good}
+			\begin{itemize}
+				\item<1-> inheritance
+                \begin{lstlisting}
+>>> class myInt(int):
+...   def __add__(self,x):
+...      return self - x
+>>> myInt(1)+1
+0
+\end{lstlisting}
+                \item<2-> polymorphism
+                \begin{lstlisting}
+>>> myInt(1)+2
+-1
+>>> 1+2
+2
+>>> '1'+'2'
+'12'
+\end{lstlisting}
+            \item<3-> Data abstraction
+            \end{itemize}
+		\end{frame}
+	\subsection{Disadvantages}
+		\begin{frame}{Bad}
+			\begin{itemize}
+				\item<1-> its not all rainbows and lipsticks!
+                \item<1-> The real world is not all black and white (neat classes)
+                \item<2-> it could become complex to handle al the diverent objects and outcomes
+            \end{itemize}
+		\end{frame}
+	\subsection{OOP in python}
+		\begin{frame}[fragile]{OOPython}
+			\begin{itemize}
+				\item<1-> create normal object
+                \begin{lstlisting}{language=python}
+class myC(object):
+    def __init__(self,a):
+        self.val = a
+    def __del__(self):
+        del self.val
+    def __str__(self):
+        return "My Value is: '%s'" % self.val
+    def func(self,b):
+        self.val *= b
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+		\begin{frame}[fragile]{OOPython inheritated}
+			\begin{itemize}
+				\item<1-> create inheritated object
+                \begin{lstlisting}{language=python}
+class childC(myC):
+    def func(self,b):
+        self.val += b
+\end{lstlisting}
+                \item<2-> exec
+                \begin{lstlisting}
+>>> mC = myC(2)
+>>> mC.func(3)
+>>> cC = childC(2)
+>>> cC.func(3)
+>>> print mC
+My Value is: '6'
+>>> print cC
+My Value is: '5'
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+\section{Example}
+    \subsection{Cars}
+		\begin{frame}{Simple OOP}
+            \begin{itemize}
+                \item<1-> Example with cars
+            \end{itemize}
+            \begin{figure}
+                \includegraphics<1>[height=0.5\columnwidth]{pics/cars_UML1.png}%
+                \includegraphics<2>[height=0.5\columnwidth]{pics/cars_UML2.png}%
+            \end{figure}
+        \end{frame}
+
+
+
+\end{document}

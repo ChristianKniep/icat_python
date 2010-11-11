@@ -1,0 +1,114 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout]{beamer}
+\let\Tiny=\tiny
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{uml}
+
+%\setbeamertemplate{navigation symbols}{}
+\usetheme{Boadilla}
+
+\usecolortheme{beaver}
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+
+
+\definecolor{lGray}{gray}{.90}
+
+\newcommand{\code}[1]{\colorbox{lGray}{\texttt{#1}}}
+
+\author{Christian Kniep}
+
+\begin{document}
+
+\title{python - OOP}  
+\institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
+\date[\today]{\today} 
+
+\begin{frame}
+	\titlepage
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents
+\end{frame} 
+
+        
+\section{Own library}
+    \subsection{test.py}
+        \begin{frame}[fragile]{my 1st library}
+			\begin{itemize}
+                \item<1-> To use an object within the prompt we could import our script
+                \item<1-> Create following little testobject in \code{test.py}:
+                    \begin{lstlisting}
+class o(object):
+        def __init__(self): pass
+        def __str__(self): return "huhu"
+\end{lstlisting}
+                \item<2-> make it executable \code{chmod +x test.py}
+                \item<2-> import and use it:
+                \begin{lstlisting}{language=python}
+$ python
+>>> import test
+>>> o1=test.o()
+>>> print o1
+huhu
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+
+\section{Controll-Structures}
+    \subsection{if}
+        \begin{frame}[fragile]{if-else-elif}
+        	\begin{itemize}
+                \item<1-> You know the construct if-else:
+                    \begin{lstlisting}
+if var:
+    print 'not empty'
+else:
+    print 'empty'
+\end{lstlisting}
+                \item<2-> Instead of else you could check another condition
+                    \begin{lstlisting}
+if var1:
+    print 'var1 not empty'
+elif var2:
+    print 'var2 not empty'
+else:
+    print 'both empty'
+\end{lstlisting}             
+            \end{itemize}
+		\end{frame}
+    \subsection{for}
+        \begin{frame}[fragile]{for i in sth...}
+        	\begin{itemize}
+                \item<1-> To iterate over something you use \code{for}:
+                    \begin{lstlisting}
+if item in [1,2,3,4]:
+    print item
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+
+\section{Experience} 
+	\subsection{Car}
+		\begin{frame}{Car extensions}
+			\begin{enumerate}
+				\item<1-> Catch up the trail of the car-example from last session
+                \item<2-> Add the function \code{driving(km)}, \code{refuel(liter)}
+                \item<2-> The showCar are not able to drive, include this in your program
+                \item<3-> Create an object for some load which has a function getWeight()
+                \item<4-> Add a trunk which arranges the load-objects in a list
+                \item<5-> Create \code{load(sth)} and \code{unload(sth)}
+            \end{enumerate}
+		\end{frame}
+
+
+\end{document}

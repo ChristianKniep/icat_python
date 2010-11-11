@@ -1,0 +1,84 @@
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout]{beamer}
+\let\Tiny=\tiny
+\hypersetup{pdfpagemode=FullScreen}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{uml}
+
+%\setbeamertemplate{navigation symbols}{}
+\usetheme{Boadilla}
+
+\usecolortheme{beaver}
+\usefonttheme{professionalfonts}
+\useinnertheme{rounded}
+\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+
+
+\definecolor{lGray}{gray}{.90}
+
+\newcommand{\code}[1]{\colorbox{lGray}{\texttt{#1}}}
+
+\author{Christian Kniep}
+
+\begin{document}
+
+\title{python - OOP}  
+\institute[ICAT Bandung]{Internation Center of Applied Technologies Bandung}
+\date[\today]{\today} 
+
+\begin{frame}
+	\titlepage
+\end{frame} 
+
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents
+\end{frame} 
+
+
+\section{More!} 
+	\subsection{Review}
+		\begin{frame}[fragile]{Lets look on the class again}
+			\begin{itemize}
+				\item<1-> inheritance
+                \begin{lstlisting}{language=python}
+class myC(object):
+    def __init__(self,a):
+        self.val = a
+    def __del__(self):
+        del self.val
+    def __str__(self):
+        return "My Value is: '%s'" % self.val
+    def func(self,b):
+        self.val *= b
+\end{lstlisting}
+            \end{itemize}
+		\end{frame}
+        
+    \subsection{MyInt}
+		\begin{frame}{Do it on your own}
+            \begin{itemize}
+                \item<1-> create an object which includes the four basic calculation
+            \end{itemize}
+            \begin{figure}
+                \includegraphics<1>[height=0.5\columnwidth]{pics/MyInt.png}%
+            \end{figure}
+        \end{frame}
+    \subsection{List}
+		\begin{frame}{know some recursive stuff}
+            \begin{itemize}
+                \item<1-> Create the ListElement-object and the begining of the list and then create a list
+            \end{itemize}
+            \begin{figure}
+                \includegraphics<1>[height=0.5\columnwidth]{pics/List.png}%
+            \end{figure}
+        \end{frame}
+
+
+
+\end{document}

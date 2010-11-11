@@ -162,15 +162,15 @@ TypeError: unsupported operand type(s) for -:
 \subsection{Strings}
 There are a lot of Operators around, just a view to get an idea:\\
 \begin{tabular}{llll}
-\verb!+!        & concatenate               & \verb!"1"+"2"! & \verb!"12"! \\
-\verb!*!        & multiply                  & \verb!"#"*5! & \verb!"#####"!  \\
-\verb!len()!    & give length               & \verb!len("12345")! & \verb!5! \\
-\verb!find()!   & index of 1st occurrence   & \verb!"12345".find("2")! & \verb!1! \\
-\verb!center()! & center string [and fill]  & \verb!"1".center(3,"-")! & \verb!-1-! \\
-\verb!rjust()!  & align right [and fill]    & \verb!"1".rjust(3,"-")! & \verb!--1! \\
+\verb!+!        & concatenate           & \verb!"1"+"2"! & \verb!"12"! \\
+\verb!*!        & multiply              & \verb!"#"*5! & \verb!"#####"!  \\
+\verb!len()!    & give length           & \verb!len("12345")! & \verb!5! \\
+\verb!find()!   & index of 1st sight    & \verb!"12345".find("2")! & \verb!1! \\
+\verb!center()! & center string         & \verb!"1".center(3,"-")! & \verb!-1-! \\
+\verb!rjust()!  & align right           & \verb!"1".rjust(3,"-")! & \verb!--1! \\
 \end{tabular}
 
-\section{Comparisons}
+\section{Control-Structures}
 \subsection{if-then-else}
 The if-then-else construct is simply this:
 \begin{lstlisting}
@@ -178,6 +178,29 @@ The if-then-else construct is simply this:
 ...   print 'here its true'
 ... else:
 ...   print 'now the false part'
+\end{lstlisting}
+\subsection{for}
+To iterate:
+\begin{lstlisting}
+>>> for item in [1,2,3]:
+...   print item
+1
+2
+3
+\end{lstlisting}
+\subsection{break,continue,pass}
+To control the for-structure you can use break,continue,pass.
+\begin{lstlisting}
+for item in [1,2,3,4,5]:
+  f item==1:
+    pass     # we will do nothing and proceed
+  if item==2:
+    continue # skip this iteration
+  if item==3:
+    break    # exits the for-construct
+  print '.'  # will be executed after pass
+else:
+  pass # this else will be executed if no break is raised
 \end{lstlisting}
 True has to be substituted by some condition.
 \subsection{conditions}
@@ -208,8 +231,31 @@ NameError: name 'sqrt' is not defined
 >>> from math import *
 >>> ceil(3.6)
 4.0
-
 \end{lstlisting}
+\section{Control-Structures}
+\subsection{if}
+
+\section{OOP}
+\subsection{Object}
+\begin{lstlisting}{language=python}
+class myC(object):
+    def __init__(self,a):
+        self.val = a
+    def __del__(self):
+        del self.val
+    def __str__(self):
+        return "My Value is: '%s'" % self.val
+    def func(self,b):
+        self.val *= b
+\end{lstlisting}
+\subsection{Child}
+The child will inheritate everything from the parent. You could redefine function. Due to the polymorphism it depends on the object which function is called.
+\begin{lstlisting}{language=python}
+class childC(myC):
+    def func(self,b):
+        self.val += b
+\end{lstlisting}
+
 
 \end{multicols}
 \end{document}
